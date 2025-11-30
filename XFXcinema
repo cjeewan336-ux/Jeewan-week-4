@@ -1,0 +1,74 @@
+import java.util.Scanner;
+
+/**
+ * Write a description of class XFXcinema here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+public class XFXcinema
+{
+    public static void main (String [] args) {
+        
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter your age group (Child, Adult, Senior): ");
+        String ageGroup = scanner.nextLine().trim().toLowerCase();
+
+        System.out.println("Enter the movie language (Nepali, Hindi, English): ");
+        String movieLanguage = scanner.nextLine().trim().toLowerCase();
+
+        System.out.println("Are you a student? (yes/no): ");
+        boolean isStudent = scanner.nextLine().trim().equalsIgnoreCase("yes");
+
+        System.out.println("Is it a festival day? (yes/no): ");
+        boolean isFestival = scanner.nextLine().trim().equalsIgnoreCase("yes");
+
+        int basePrice = 0;
+
+        switch (ageGroup) {
+            case "child":
+                basePrice = 150;
+                break;
+            case "adult":
+                basePrice = 250;
+                break;
+            case "senior":
+                basePrice = 200;
+                break;
+            default:
+                System.out.println("Invalid age group.");
+                return;
+        }
+
+        switch (movieLanguage) {
+            case "hindi":
+                basePrice += 50;
+                break;
+            case "english":
+                basePrice += 100;
+                break;
+            case "nepali":
+                break;
+            default:
+                System.out.println("Invalid movie language.");
+                return;
+        }
+
+        double finalPrice = basePrice;
+
+        if (isStudent) {
+            finalPrice *= 0.8; // 20% discount
+        }
+
+        if (isFestival) {
+            finalPrice *= 0.85; // 15% discount
+        }
+
+        System.out.printf("The final ticket price is: Rs. %.2f%n", finalPrice);
+        scanner.close();
+        
+        
+        
+    }
+}
